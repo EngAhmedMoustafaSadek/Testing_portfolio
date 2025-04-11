@@ -1,0 +1,111 @@
+/* components/About.css */
+.about {
+    background-color: #f9fafc;
+  }
+  
+  .about-content {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+  }
+  
+  .about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .profile-image {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(30, 58, 138, 0.15);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+
+  .profile-image img {
+    width: 100%;         /* The image will fill the width of the container */
+    height: 100%;        /* The image will fill the height of the container */
+    object-fit: cover;   /* Ensures the image covers the container without distortion */
+    object-position: 50% 20%; /* Adjusts the image position: center horizontally, top vertically */
+    border-radius: 50%;
+  }
+  
+  .profile-image:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(30, 58, 138, 0.2);
+  }
+  
+  .about-text {
+    flex: 1;
+  }
+  
+  .about-text h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+  
+  .journey-paragraph {
+    font-style: italic;
+    border-left: 3px solid var(--secondary-color);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .personal-info {
+    margin: 2rem 0;
+  }
+  
+  .info-item {
+    margin-bottom: 0.75rem;
+    display: flex;
+  }
+  
+  .info-title {
+    min-width: 120px;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+  
+  .info-value {
+    color: var(--text-color);
+  }
+  
+  @media (max-width: 992px) {
+    .about-content {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .about-text {
+      text-align: center;
+    }
+    
+    .info-item {
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .profile-image {
+      width: 280px;
+      height: 280px;
+    }
+    
+    .about-text h3 {
+      font-size: 1.5rem;
+    }
+    
+    .info-item {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .info-title {
+      margin-bottom: 0.25rem;
+    }
+  }

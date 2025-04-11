@@ -1,0 +1,72 @@
+/* components/SocialLinks.css */
+.social-links {
+    position: fixed;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 99;
+  }
+  
+  .social-link {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-color);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .social-link:hover {
+    transform: translateY(-5px);
+  }
+
+  .social-link img {
+    width: 100%;         /* The image will fill the width of the container */
+    height: 100%;        /* The image will fill the height of the container */
+    object-fit: cover;   /* Ensures the image covers the container without distortion */
+    border-radius: 50%;
+  }
+  
+  .social-link.linkedin:hover {
+    background-color: #0077b5;
+    color: white;
+  }
+  
+  .social-link.github:hover {
+    background-color: #333;
+    color: white;
+  }
+  
+  .social-link.email:hover {
+    background-color: var(--secondary-color);
+    color: white;
+  }
+  
+  @media (max-width: 768px) {
+    .social-links {
+      left: 10px;
+    }
+    
+    .social-link {
+      width: 35px;
+      height: 35px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .social-links {
+      position: fixed;
+      top: auto;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      flex-direction: row;
+    }
+  }

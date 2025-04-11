@@ -1,0 +1,268 @@
+/* components/Experience.css */
+.experience {
+    background-color: var(--bg-color);
+  }
+  
+  .experience-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+  
+  .tab-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--light-gray);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: var(--transition);
+    margin: 0 1rem;
+  }
+  
+  .tab-btn:hover {
+    color: var(--secondary-color);
+  }
+  
+  .tab-btn.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+  }
+  
+  /* Work Experience - Timeline */
+  .timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background-color: var(--light-gray);
+  }
+  
+  .timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 0 3rem 3rem 0;
+  }
+  
+  .timeline-item:nth-child(even) {
+    left: 50%;
+    padding: 0 0 3rem 3rem;
+  }
+  
+  .timeline-dot {
+    position: absolute;
+    top: 0;
+    right: -11px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    z-index: 1;
+  }
+  
+  .timeline-item:nth-child(even) .timeline-dot {
+    left: -9px;
+    right: auto;
+  }
+  
+  .timeline-content {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .timeline-header h3 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .company {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+  
+  .period {
+    display: block;
+    font-style: italic;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+  }
+  
+  .responsibilities {
+    padding-left: 1.2rem;
+  }
+  
+  .responsibilities li {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Projects */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+  
+  .project-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .project-image-container {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .project-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+  }
+  
+  .project-card:hover .project-image {
+    transform: scale(1.1);
+  }
+  
+  .project-info {
+    padding: 1.5rem;
+  }
+  
+  .project-info h3 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+  
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .tech-tag {
+    padding: 0.25rem 0.75rem;
+    background-color: var(--light-gray);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  
+  /* Certifications */
+  .certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .certification-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .certification-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .certification-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: rgba(59, 130, 246, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 1.5rem;
+  }
+  
+  .certification-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Adjusts the image so it covers the container */
+    border-radius: 50%; /* Ensures the image remains circular */
+  }
+
+  .certificate-icon {
+    font-size: 2rem;
+    color: var(--secondary-color);
+  }
+  
+  .certification-content h3 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+  
+  .cert-date {
+    font-style: italic;
+    color: var(--secondary-color);
+  }
+  
+  @media (max-width: 992px) {
+    .experience-tabs {
+      flex-wrap: wrap;
+    }
+    
+    .tab-btn {
+      margin-bottom: 1rem;
+    }
+    
+    .timeline::before {
+      left: 30px;
+    }
+    
+    .timeline-item,
+    .timeline-item:nth-child(even) {
+      width: 100%;
+      padding-left: 80px;
+      padding-right: 0;
+      left: 0;
+    }
+    
+    .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot {
+      left: 20px;
+      right: auto;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .projects-grid,
+    .certifications-grid {
+      grid-template-columns: 1fr;
+    }
+  }
