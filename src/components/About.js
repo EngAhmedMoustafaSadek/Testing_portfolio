@@ -35,7 +35,7 @@ const About = () => {
         <div className="about-content">
           <div className="about-image scroll-animation">
             <div className="profile-image">
-              <img src={profilePhoto} alt="Ahmed Moustafa Sadek"/>
+              <img src={} alt="Ahmed Moustafa Sadek"/>
             </div>
           </div>
           
