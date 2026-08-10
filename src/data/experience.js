@@ -92,11 +92,9 @@ export const roles = [
     ],
   },
   {
-    id: 'ts-software-test-intern',
+    id: 'seitech-software-test-intern',
     title: 'Software Test Intern',
-    // NOTE: the source facts list this role directly under the T&S heading with no
-    // separate employer. Confirm before publishing if it belongs elsewhere.
-    company: 'T&S (Technology & Strategy), Engineering & Software Solutions',
+    company: 'SEITech Solutions',
     period: 'Sep 2023 to Dec 2023',
     location: 'Giza, Egypt',
     clients: [],

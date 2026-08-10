@@ -4,24 +4,6 @@
   padding-block: var(--space-7) var(--space-8);
 }
 
-.hero__portrait {
-  margin-bottom: var(--space-5);
-}
-
-.hero__portrait img {
-  width: 88px;
-  height: 88px;
-  object-fit: cover;
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius);
-  filter: grayscale(1) contrast(1.05);
-  transition: filter 400ms var(--ease);
-}
-
-.hero__portrait img:hover {
-  filter: none;
-}
-
 .hero__eyebrow {
   color: var(--accent);
   margin-bottom: var(--space-4);

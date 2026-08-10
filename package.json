@@ -1,5 +1,5 @@
 {
-  "name": "cluade-portfolio-app",
+  "name": "ahmed-sadek-portfolio",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,12 +9,12 @@
     "@testing-library/user-event": "^13.5.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "react-router-dom": "^6.30.4",
+    "react-scripts": "5.0.1"
   },
   "homepage": "https://EngAhmedMoustafaSadek.github.io/Testing_portfolio",
   "scripts": {
-    "start": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -41,5 +41,6 @@
   },
   "devDependencies": {
     "gh-pages": "^6.3.0"
-  }
+  },
+  "description": "Portfolio of Ahmed Moustafa Sadek, System Test Engineer (SDET)."
 }

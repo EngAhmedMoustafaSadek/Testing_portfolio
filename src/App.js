@@ -37,8 +37,12 @@ const RouteChangeHandler = ({ mainRef }) => {
 const App = () => {
   const mainRef = useRef(null);
 
+  // Opting into the v7 behaviours now keeps the console clean and makes a
+  // future major upgrade a version bump rather than a migration.
   return (
-    <HashRouter>
+    <HashRouter
+      future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+    >
       <div className="app">
         <SkipLink />
         <Nav />

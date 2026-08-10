@@ -1,31 +1,14 @@
 // src/components/Hero.js
+// Fully typographic. No imagery anywhere on the site.
 
 import React from 'react';
 import Reveal from './Reveal';
 import { identity } from '../data/content';
-import portrait from '../assets/profile-pic.jpeg';
 import './Hero.css';
 
-const Hero = ({
-  content,
-  headingLevel: Heading = 'h1',
-  showMeta = true,
-  showPortrait = false,
-}) => (
+const Hero = ({ content, headingLevel: Heading = 'h1', showMeta = true }) => (
   <div className="hero">
     <div className="container hero__inner">
-      {showPortrait ? (
-        <Reveal className="hero__portrait">
-          <img
-            src={portrait}
-            alt={`Portrait of ${identity.name}`}
-            width="88"
-            height="88"
-            loading="eager"
-          />
-        </Reveal>
-      ) : null}
-
       <Reveal className="hero__eyebrow u-mono" as="p">
         {content.eyebrow}
       </Reveal>

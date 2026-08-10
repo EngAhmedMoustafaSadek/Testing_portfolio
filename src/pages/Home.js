@@ -18,7 +18,7 @@ const Home = () => {
 
   return (
     <>
-      <Hero content={hero.home} showPortrait />
+      <Hero content={hero.home} />
 
       <Section
         id="projects"

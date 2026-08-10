@@ -141,27 +141,18 @@
 }
 
 @media (min-width: 48rem) {
+  /* auto-fit collapses empty tracks, so the columns follow the number of
+     cards. The track pages show fewer projects and still fill their row. */
   .projects {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-4);
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   }
 
   .project {
     padding: var(--space-5);
   }
 
-  /* The first card leads, so it spans the full width. */
-  .projects > li:first-child {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (min-width: 64rem) {
-  .projects {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .projects > li:first-child {
-    grid-column: auto;
+  /* A lone card would otherwise stretch into a banner. */
+  .projects--single {
+    max-width: 34rem;
   }
 }

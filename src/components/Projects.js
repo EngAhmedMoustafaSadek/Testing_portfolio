@@ -81,7 +81,11 @@ const Projects = ({ items, filterable = false }) => {
             }
           : {})}
       >
-        <ul className="projects">
+        <ul
+          className={`projects ${
+            visible.length === 1 ? 'projects--single' : ''
+          }`.trim()}
+        >
           {visible.map((project, index) => (
             <li key={project.id}>
               <ProjectCard project={project} delay={index * 70} />
