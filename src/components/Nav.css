@@ -1,0 +1,184 @@
+/* src/components/Nav.css */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(11, 13, 16, 0.72);
+  border-bottom: 1px solid transparent;
+  transition: background-color var(--duration) var(--ease),
+    border-color var(--duration) var(--ease);
+}
+
+@supports (backdrop-filter: blur(1px)) {
+  .nav {
+    backdrop-filter: blur(12px);
+  }
+}
+
+.nav.is-scrolled {
+  background-color: rgba(11, 13, 16, 0.92);
+  border-bottom-color: var(--border);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 64px;
+}
+
+.nav__brand {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav__brand:hover {
+  color: var(--accent);
+}
+
+/* ------------------------------------------------------------ toggle */
+
+.nav__toggle {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-right: calc(var(--space-2) * -1);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.nav__bars {
+  display: block;
+  width: 20px;
+}
+
+.nav__bars span {
+  display: block;
+  height: 1.5px;
+  background-color: var(--text);
+  transition: transform var(--duration) var(--ease),
+    opacity var(--duration) var(--ease);
+}
+
+.nav__bars span:first-child {
+  margin-bottom: 5px;
+}
+
+.nav__bars.is-open span:first-child {
+  transform: translateY(3.25px) rotate(45deg);
+}
+
+.nav__bars.is-open span:last-child {
+  transform: translateY(-3.25px) rotate(-45deg);
+}
+
+/* -------------------------------------------------------------- panel */
+
+.nav__panel {
+  position: absolute;
+  inset: 100% 0 auto 0;
+  display: none;
+  background-color: var(--surface-1);
+  border-block: 1px solid var(--border);
+}
+
+.nav__panel.is-open {
+  display: block;
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4) var(--space-4);
+}
+
+.nav__link {
+  display: block;
+  padding: var(--space-2) 0;
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+  text-decoration: none;
+}
+
+.nav__link:hover,
+.nav__link.is-active {
+  color: var(--text);
+}
+
+.nav__link--track {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Active track marker, one of the few places the accent appears. */
+.nav__link--track.is-active {
+  color: var(--accent);
+}
+
+.nav__divider {
+  height: 1px;
+  margin-block: var(--space-2);
+  background-color: var(--border);
+}
+
+/* ------------------------------------------------------------ desktop */
+
+@media (min-width: 48rem) {
+  .nav__inner {
+    min-height: 72px;
+  }
+
+  .nav__toggle {
+    display: none;
+  }
+
+  .nav__panel {
+    position: static;
+    display: block;
+    background: none;
+    border: 0;
+  }
+
+  .nav__list {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-5);
+    padding: 0;
+  }
+
+  .nav__link {
+    padding: var(--space-1) 0;
+  }
+
+  .nav__divider {
+    width: 1px;
+    height: 16px;
+    margin-block: 0;
+  }
+
+  .nav__link--track {
+    position: relative;
+  }
+
+  .nav__link--track.is-active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 1px;
+    background-color: var(--accent);
+  }
+}

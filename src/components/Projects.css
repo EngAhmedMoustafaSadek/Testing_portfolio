@@ -1,0 +1,158 @@
+/* src/components/Projects.css */
+
+/* ------------------------------------------------------------- filter */
+
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.filter__btn {
+  padding: var(--space-2) var(--space-3);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color var(--duration) var(--ease),
+    border-color var(--duration) var(--ease),
+    background-color var(--duration) var(--ease);
+}
+
+.filter__btn:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+.filter__btn.is-active {
+  color: var(--accent);
+  border-color: var(--accent-line);
+  background-color: var(--accent-wash);
+}
+
+/* --------------------------------------------------------------- grid */
+
+.projects {
+  display: grid;
+  gap: var(--space-4);
+}
+
+/* --------------------------------------------------------------- card */
+
+.project {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--space-4);
+  background-color: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--duration) var(--ease),
+    background-color var(--duration) var(--ease);
+}
+
+.project:hover {
+  background-color: var(--surface-3);
+  border-color: var(--border-strong);
+}
+
+.project__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border);
+}
+
+.project__number {
+  color: var(--accent);
+}
+
+.project__track {
+  color: var(--text-faint);
+  text-align: right;
+}
+
+.project__title {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--space-4);
+}
+
+.project__detail {
+  margin-bottom: var(--space-4);
+}
+
+.project__detail dt {
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+.project__detail dd {
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+  margin-bottom: var(--space-4);
+}
+
+.project__detail dd:last-child {
+  margin-bottom: 0;
+}
+
+.project__foot {
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+}
+
+.project__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.tag {
+  padding: var(--space-1) var(--space-2);
+  background-color: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  letter-spacing: 0.04em;
+}
+
+.project__note {
+  color: var(--text-faint);
+  letter-spacing: 0.08em;
+}
+
+@media (min-width: 48rem) {
+  /* auto-fit collapses empty tracks, so the columns follow the number of
+     cards. The track pages show fewer projects and still fill their row. */
+  .projects {
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  }
+
+  .project {
+    padding: var(--space-5);
+  }
+
+  /* A lone card would otherwise stretch into a banner. */
+  .projects--single {
+    max-width: 34rem;
+  }
+}

@@ -1,55 +1,65 @@
-// App.js - Main React component
-import React, { useState, useEffect } from 'react';
-import Header from './components/Header';
-import Home from './components/Home';
-import About from './components/About';
-import SkillsTools from './components/SkillsTools';
-import Experience from './components/Experience';
-import Contact from './components/Contact';
-import SocialLinks from './components/SocialLinks';
+// src/App.js
+// HashRouter is deliberate: it works on GitHub Pages under the /Testing_portfolio
+// project path with no 404.html redirect and no basename handling.
+
+import React, { useEffect, useRef } from 'react';
+import {
+  HashRouter,
+  Route,
+  Routes,
+  useLocation,
+} from 'react-router-dom';
+import Nav from './components/Nav';
+import Footer from './components/Footer';
+import SkipLink from './components/SkipLink';
+import Home from './pages/Home';
+import TrackPage from './pages/TrackPage';
 import './App.css';
 
-function App() {
-  const [activeSection, setActiveSection] = useState('home');
-  
+// On route change, reset scroll and move focus to <main> so keyboard and screen
+// reader users land on the new page rather than staying where they were.
+const RouteChangeHandler = ({ mainRef }) => {
+  const { pathname } = useLocation();
+  const isFirstRender = useRef(true);
+
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll('section');
-      let current = '';
-      
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= (sectionTop - sectionHeight/3)) {
-          current = section.getAttribute('id');
-        }
-      });
-      
-      if (current !== activeSection) {
-        setActiveSection(current);
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [activeSection]);
-  
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    window.scrollTo(0, 0);
+    mainRef.current?.focus();
+  }, [pathname, mainRef]);
+
+  return null;
+};
+
+const App = () => {
+  const mainRef = useRef(null);
+
+  // Opting into the v7 behaviours now keeps the console clean and makes a
+  // future major upgrade a version bump rather than a migration.
   return (
-    <div className="App">
-      <Header activeSection={activeSection} />
-      <SocialLinks />
-      <main>
-        <Home />
-        <About />
-        <SkillsTools />
-        <Experience />
-        <Contact />
-      </main>
-    </div>
+    <HashRouter
+      future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+    >
+      <div className="app">
+        <SkipLink />
+        <Nav />
+        <RouteChangeHandler mainRef={mainRef} />
+        <main id="main" ref={mainRef} tabIndex={-1}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/embedded" element={<TrackPage track="embedded" />} />
+            <Route path="/web" element={<TrackPage track="web" />} />
+            {/* Anything unrecognised falls back to the home page. */}
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </HashRouter>
   );
-}
+};
 
 export default App;

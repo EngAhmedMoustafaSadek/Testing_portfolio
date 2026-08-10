@@ -1,0 +1,67 @@
+/* src/components/Certifications.css */
+
+.credentials {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.credentials__title {
+  margin-bottom: var(--space-3);
+  color: var(--text);
+}
+
+.credentials__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.credential {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding-block: var(--space-3);
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-small);
+}
+
+.credential:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.credential__name {
+  color: var(--text);
+}
+
+.credential__institution {
+  display: block;
+  color: var(--text-muted);
+}
+
+.credential__date {
+  color: var(--text-faint);
+}
+
+@media (min-width: 48rem) {
+  .credential {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+
+  .credential__date {
+    flex-shrink: 0;
+  }
+}
+
+@media (min-width: 62rem) {
+  .credentials {
+    flex-direction: row;
+    gap: var(--space-7);
+  }
+
+  .credentials > * {
+    flex: 1;
+  }
+}
