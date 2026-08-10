@@ -81,13 +81,28 @@ jobs:
       # manual one behave identically. Installed on its own to avoid a full
       # `npm ci` for a single dev dependency.
       #
-      # The identity comes from git config rather than gh-pages' --user flag.
-      # --user is parsed with a strict RFC 5322 parser, and the bot address
-      # 41898282+github-actions[bot]@users.noreply.github.com is not valid
-      # under it: square brackets are RFC specials and cannot appear
-      # unquoted in a local part. git itself has no such restriction.
+      # Two things this step has to get right:
+      #
+      # 1. Identity comes from git config, not gh-pages' --user flag. --user
+      #    is parsed with a strict RFC 5322 parser, and the bot address
+      #    41898282+github-actions[bot]@users.noreply.github.com is invalid
+      #    under it: square brackets are RFC specials and cannot appear
+      #    unquoted in a local part. git applies no such restriction.
+      #
+      # 2. The repo URL must carry credentials. gh-pages does not publish
+      #    from this checkout; it makes its own clone in a cache directory,
+      #    which does not inherit the repo-local credential that
+      #    actions/checkout writes into .git/config. Without an
+      #    authenticated URL that clone cannot push. --silent keeps the
+      #    token out of the log, including on error.
       - name: Publish to gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          npx --yes gh-pages@6 --dist build --message "Deploy ${GITHUB_SHA} [skip ci]"
+          npx --yes gh-pages@6 \
+            --dist build \
+            --silent \
+            --repo "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+            --message "Deploy ${GITHUB_SHA} [skip ci]"
