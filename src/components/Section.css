@@ -10,6 +10,14 @@
 .section {
   padding-block: var(--space-8);
   border-top: 1px solid var(--border);
+  /* Offset so a jumped-to heading clears the sticky header. */
+  scroll-margin-top: var(--space-6);
+}
+
+/* Sections take focus when jumped to from the nav, but should not show a
+   ring: the scroll itself is the visible feedback. */
+.section:focus {
+  outline: none;
 }
 
 .section__head {
