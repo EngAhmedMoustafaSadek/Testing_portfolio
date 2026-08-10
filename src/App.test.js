@@ -77,6 +77,60 @@ describe('project filter', () => {
   });
 });
 
+describe('section navigation', () => {
+  // Regression: these links were plain "#projects" anchors. Under HashRouter
+  // the hash is the route, so clicking one navigated to /projects, fell
+  // through to the catch-all, and made the section links vanish until the
+  // brand link reset the route.
+  const sectionNames = [/^projects$/i, /^experience$/i, /^skills$/i, /^contact$/i];
+
+  it('cancels the default hash navigation so the route survives', () => {
+    render(<App />);
+
+    // dispatchEvent returns false when preventDefault was called. Without
+    // that, the browser rewrites the hash and HashRouter changes route.
+    const notCancelled = fireEvent.click(
+      screen.getByRole('link', { name: /^projects$/i })
+    );
+    expect(notCancelled).toBe(false);
+
+    sectionNames.forEach((name) => {
+      expect(screen.getByRole('link', { name })).toBeInTheDocument();
+    });
+  });
+
+  it('scrolls to the section instead of changing the route', () => {
+    const spy = jest.spyOn(Element.prototype, 'scrollIntoView');
+    render(<App />);
+
+    fireEvent.click(screen.getByRole('link', { name: /^skills$/i }));
+
+    expect(spy).toHaveBeenCalled();
+    // Still on the home route, so the track links are not marked active.
+    expect(screen.getByRole('link', { name: /^embedded$/i })).not.toHaveClass(
+      'is-active'
+    );
+    spy.mockRestore();
+  });
+
+  it.each([
+    ['#/embedded', /system and integration testing/i],
+    ['#/web', /web and api test automation/i],
+  ])('shows the section links on %s', (hash, heading) => {
+    window.location.hash = hash;
+    render(<App />);
+
+    expect(
+      screen.getByRole('heading', { level: 1, name: heading })
+    ).toBeInTheDocument();
+    sectionNames.forEach((name) => {
+      expect(screen.getByRole('link', { name })).toBeInTheDocument();
+    });
+
+    window.location.hash = '#/';
+  });
+});
+
 describe('navigation', () => {
   it('gives the menu toggle an accessible expanded state', () => {
     render(<App />);

@@ -1,5 +1,7 @@
 # Ahmed Moustafa Sadek, portfolio
 
+[![CI](https://github.com/EngAhmedMoustafaSadek/Testing_portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/EngAhmedMoustafaSadek/Testing_portfolio/actions/workflows/ci.yml)
+
 Personal portfolio site positioning me as a System Test Engineer (SDET),
 covering both safety-critical embedded systems and web platforms.
 
@@ -79,6 +81,14 @@ Verified in Chromium at 375px, 768px and 1440px:
 - Menu toggle is a real button with `aria-expanded`
 - Project filter is a tablist with a roving tabindex and arrow key support
 - No horizontal scroll at any tested width
+
+## CI
+
+`.github/workflows/ci.yml` runs the test suite and a production build on every
+push to `master` and every pull request. The build step sets `CI=true`, which
+promotes ESLint warnings to errors, so a lint regression fails the run.
+
+Deployment stays manual via `npm run deploy`.
 
 ## Local development
 

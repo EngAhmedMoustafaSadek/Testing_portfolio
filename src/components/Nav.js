@@ -12,7 +12,6 @@ const Nav = () => {
   const [scrolled, setScrolled] = useState(false);
   const toggleRef = useRef(null);
   const { pathname } = useLocation();
-  const isHome = pathname === '/';
 
   // Close the panel whenever the route changes.
   useEffect(() => {
@@ -37,6 +36,29 @@ const Nav = () => {
     document.addEventListener('keydown', onKeyDown);
     return () => document.removeEventListener('keydown', onKeyDown);
   }, [open]);
+
+  // Under HashRouter the whole route lives in the hash, so letting a plain
+  // "#projects" link through would be read as a route change to /projects.
+  // Scroll to the section directly and leave the route alone.
+  const goToSection = (event, id) => {
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    event.preventDefault();
+    setOpen(false);
+
+    const reduced = window.matchMedia?.(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+    target.scrollIntoView({
+      behavior: reduced ? 'auto' : 'smooth',
+      block: 'start',
+    });
+
+    // Move focus too, so keyboard and screen reader users follow the jump.
+    target.setAttribute('tabindex', '-1');
+    target.focus({ preventScroll: true });
+  };
 
   return (
     <header className={`nav ${scrolled ? 'is-scrolled' : ''}`}>
@@ -68,16 +90,18 @@ const Nav = () => {
           aria-label="Primary"
         >
           <ul className="nav__list">
-            {/* In-page anchors only make sense on the home page. */}
-            {isHome
-              ? nav.sections.map((item) => (
-                  <li key={item.id}>
-                    <a className="nav__link" href={`#${item.id}`}>
-                      {item.label}
-                    </a>
-                  </li>
-                ))
-              : null}
+            {/* Every route renders these four sections. */}
+            {nav.sections.map((item) => (
+              <li key={item.id}>
+                <a
+                  className="nav__link"
+                  href={`#${item.id}`}
+                  onClick={(event) => goToSection(event, item.id)}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
 
             <li className="nav__divider" aria-hidden="true" />
 
