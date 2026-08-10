@@ -1,20 +1,16 @@
 {
   "files": {
-    "main.css": "/Testing_portfolio/static/css/main.e09ad4e1.css",
-    "main.js": "/Testing_portfolio/static/js/main.5c29033f.js",
-    "static/media/smart-led.png": "/Testing_portfolio/static/media/smart-led.6260a913384808c87ba2.png",
-    "static/media/platform.png": "/Testing_portfolio/static/media/platform.699d6ceedf607cc04bfb.png",
-    "static/media/embedded.jpg": "/Testing_portfolio/static/media/embedded.05d645f2aff0f1569e5d.jpg",
-    "static/media/test-summary-tool.webp": "/Testing_portfolio/static/media/test-summary-tool.15635d40d33714440a35.webp",
-    "static/media/profile-pic.jpeg": "/Testing_portfolio/static/media/profile-pic.47aaad382967c8ef8e08.jpeg",
-    "static/media/ISTQB.png": "/Testing_portfolio/static/media/ISTQB.d482d61e6837df632388.png",
-    "static/media/radar-system.jpg": "/Testing_portfolio/static/media/radar-system.87fdce825bd1a8610a1e.jpg",
+    "main.css": "/Testing_portfolio/static/css/main.5f15b774.css",
+    "main.js": "/Testing_portfolio/static/js/main.c3cd8c6c.js",
+    "static/media/inter-latin-var.woff2": "/Testing_portfolio/static/media/inter-latin-var.4f2981d82860061bca3e.woff2",
+    "static/media/jetbrains-mono-latin-var.woff2": "/Testing_portfolio/static/media/jetbrains-mono-latin-var.46a60ae0a9bc7ea5c49d.woff2",
+    "static/media/space-grotesk-latin-var.woff2": "/Testing_portfolio/static/media/space-grotesk-latin-var.689e6485b7e1094b1b7d.woff2",
     "index.html": "/Testing_portfolio/index.html",
-    "main.e09ad4e1.css.map": "/Testing_portfolio/static/css/main.e09ad4e1.css.map",
-    "main.5c29033f.js.map": "/Testing_portfolio/static/js/main.5c29033f.js.map"
+    "main.5f15b774.css.map": "/Testing_portfolio/static/css/main.5f15b774.css.map",
+    "main.c3cd8c6c.js.map": "/Testing_portfolio/static/js/main.c3cd8c6c.js.map"
   },
   "entrypoints": [
-    "static/css/main.e09ad4e1.css",
-    "static/js/main.5c29033f.js"
+    "static/css/main.5f15b774.css",
+    "static/js/main.c3cd8c6c.js"
   ]
 }
