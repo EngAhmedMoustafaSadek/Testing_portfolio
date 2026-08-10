@@ -82,13 +82,31 @@ Verified in Chromium at 375px, 768px and 1440px:
 - Project filter is a tablist with a roving tabindex and arrow key support
 - No horizontal scroll at any tested width
 
-## CI
+## CI and deployment
 
-`.github/workflows/ci.yml` runs the test suite and a production build on every
-push to `master` and every pull request. The build step sets `CI=true`, which
-promotes ESLint warnings to errors, so a lint regression fails the run.
+`.github/workflows/ci.yml` has two jobs.
 
-Deployment stays manual via `npm run deploy`.
+**build** runs on every push to `master` and every pull request: installs with
+`npm ci`, runs the test suite, then runs a production build. The build step
+sets `CI=true`, which promotes ESLint warnings to errors, so a lint regression
+fails the run.
+
+**deploy** runs only on a push to `master`, and only if `build` passed. It
+downloads the artifact that `build` produced and publishes it to the `gh-pages`
+branch, so the deployed bundle is the exact one the tests ran against rather
+than a fresh rebuild. It uses the same `gh-pages` tool as the local script, so
+an automated deploy and a manual one behave identically.
+
+Merging to `master` therefore publishes the site. A red build blocks the
+deploy.
+
+Manual deploys still work and are the fallback if Actions is unavailable:
+
+```bash
+npm run deploy
+```
+
+GitHub Pages serves the `gh-pages` branch. That setting is unchanged.
 
 ## Local development
 
