@@ -8,3 +8,8 @@ import '@testing-library/jest-dom';
 if (!Element.prototype.scrollIntoView) {
   Element.prototype.scrollIntoView = function scrollIntoView() {};
 }
+
+// jsdom does define window.scrollTo, but it throws "Not implemented" and logs
+// to console.error. The route change handler calls it, so stub it outright
+// rather than guarding on its presence.
+window.scrollTo = function scrollTo() {};
