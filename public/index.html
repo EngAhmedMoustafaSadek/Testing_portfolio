@@ -35,5 +35,22 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
+    <!--
+      Analytics: GoatCounter. Cookieless, no local storage, no personal data,
+      so no consent banner is required.
+
+      no_onload is set before count.js loads. count.js keeps an existing
+      window.goatcounter object and reads its settings, so this disables the
+      automatic pageview on load. Every pageview, including the first, is then
+      sent by src/components/Analytics.js. That is what makes the two hash
+      routes visible, and it also means nothing is counted during local
+      development, since the sender only fires on the deployed origin.
+    -->
+    <script>
+      window.goatcounter = { no_onload: true };
+    </script>
+    <script data-goatcounter="https://ahmedsadek.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
   </body>
 </html>

@@ -12,6 +12,7 @@ import {
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import SkipLink from './components/SkipLink';
+import Analytics from './components/Analytics';
 import Home from './pages/Home';
 import TrackPage from './pages/TrackPage';
 import './App.css';
@@ -47,6 +48,7 @@ const App = () => {
         <SkipLink />
         <Nav />
         <RouteChangeHandler mainRef={mainRef} />
+        <Analytics />
         <main id="main" ref={mainRef} tabIndex={-1}>
           <Routes>
             <Route path="/" element={<Home />} />
